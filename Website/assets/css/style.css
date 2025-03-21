@@ -1,0 +1,97 @@
+/* Genel Ayarlar */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('assets/images/background.png') no-repeat center center fixed;
+    background-size: cover; /* Resmi tam ekran sığacak şekilde ölçeklendirir */
+    color: #333; /* Yazı rengini görünür kılar */
+}
+
+
+h1 {
+    text-align: center;
+    color: black; /* Pastel yeşil başlık */
+    margin-top: 20px;
+}
+
+form {
+    background: #fff; /* Form arka planını beyaz yap */
+    margin: 30px auto;
+    padding: 20px;
+    width: 300px;
+    border: 1px solid #ddd; /* Hafif bir kenarlık */
+    border-radius: 8px; /* Köşeleri yuvarlat */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Gölge efekti */
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background: black; /* Buton rengi */
+    color:white; /* Yazı rengini beyaz yap */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background: #45a049; /* Daha koyu yeşil hover efekti */
+    transform: translateY(-2px); /* Hover'da yukarı kaldır */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Hover gölgesi */
+}
+
+p {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+a {
+    color: #4CAF50; /* Link rengi */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline; /* Hover'da altını çiz */
+}
+
+/* Header ve Footer */
+header, footer {
+    background: gray; /* Açık gri */
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+footer {
+    font-size: 12px;
+    color: gray;
+    background-color: gray;
+}
+.site-footer {
+    background-color: gray;
+    color: #333;
+    font-size: 0.95em;
+    margin-top: 100px; /* Footer üstünde 40px boşluk oluşturur */
+    padding: 0;
+}
