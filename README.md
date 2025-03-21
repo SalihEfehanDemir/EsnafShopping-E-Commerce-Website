@@ -36,9 +36,9 @@ A lightweight PHP-based e-commerce platform with basic functionalities such as u
 
 ## Authors
 
+- [Salih Efehan Demir](https://github.com/SalihEfehanDemir)
 - [İbrahim Bayır](https://github.com/ibrahimbayir)
 - [Mehmet Çavdar](https://github.com/mehmetcavdarr)
-- [Salih Efehan Demir](https://github.com/SalihEfehanDemir)
 
 ## License
 
