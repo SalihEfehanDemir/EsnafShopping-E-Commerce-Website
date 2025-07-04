@@ -1,7 +1,15 @@
 <?php
 session_start();
-require_once 'db.php';
-require_once 'functions.php';
+
+include 'db.php';
+include 'functions.php';
+
+// CSRF Token Oluşturma
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrf_token = $_SESSION['csrf_token'];
+
 ?>
 <!DOCTYPE html>
 <html lang="tr">
@@ -14,6 +22,7 @@ require_once 'functions.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css?v=<?php echo time(); ?>">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -155,28 +164,39 @@ require_once 'functions.php';
     </style>
 </head>
 <body>
-<header>
-<div class="logo">
-<a href="index.php">EsnafShopping</a>
-</div>
-    <nav>
-    
-    <a href="index.php"><i class="fa-solid fa-house"></i> Home</a>
-        <a href="categories.php"><i class="fa-solid fa-list"></i> Categories</a>
-        <?php if (isLoggedIn()): ?>
-            <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i> My Cart</a>
-            <?php if (isAdmin($pdo)): ?>
-                <a href="add_product.php"><i class="fa-solid fa-plus"></i> Add Product (Admin)</a>
+
+    <!-- Flash Message Gösterimi -->
+    <?php if(isset($_SESSION['flash_message'])): ?>
+        <div class="flash-message">
+            <?php 
+                echo $_SESSION['flash_message']; 
+                unset($_SESSION['flash_message']); // Mesajı gösterdikten sonra sil
+            ?>
+        </div>
+    <?php endif; ?>
+
+    <header>
+        <div class="logo">
+            <a href="index.php">Esnaf Shopping</a>
+        </div>
+        <nav>
+        
+        <a href="index.php"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="categories.php"><i class="fa-solid fa-list"></i> Categories</a>
+            <?php if (isLoggedIn()): ?>
+                <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i> My Cart</a>
+                <?php if (isAdmin($pdo)): ?>
+                    <a href="add_product.php"><i class="fa-solid fa-plus"></i> Add Product (Admin)</a>
+                <?php endif; ?>
+                <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            <?php else: ?>
+                <a href="login.php"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
+                <a href="register.php"><i class="fa-solid fa-user-plus"></i> Create Account</a>
             <?php endif; ?>
-            <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-        <?php else: ?>
-            <a href="login.php"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
-            <a href="register.php"><i class="fa-solid fa-user-plus"></i> Create Account</a>
-        <?php endif; ?>
-    </nav>
-</header>
-<main>
-    <!-- İçerik buraya gelir -->
-</main>
+        </nav>
+    </header>
+    <main>
+        <!-- İçerik buraya gelir -->
+    </main>
 </body>
 </html>

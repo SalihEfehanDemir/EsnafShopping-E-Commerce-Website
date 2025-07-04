@@ -33,14 +33,19 @@ $products = getProducts($pdo);
             </a>
         <?php endif; ?>
 
-        <?php if(isAdmin($pdo)): ?>
+        <?php if(isAdmin()): ?>
             <div style="margin-top:10px; display:flex; gap:10px; justify-content:center;">
                 <a href="edit_product.php?id=<?php echo $product['id']; ?>">
                     <button type="button">Edit</button>
                 </a>
-                <a href="delete_product.php?id=<?php echo $product['id']; ?>">
-                    <button type="button">Delete</button>
-                </a>
+                
+                <!-- GÜVENLİK DÜZELTMESİ: CSRF Korumalı Silme Formu -->
+                <form action="delete_product.php" method="post" onsubmit="return confirm('Bu ürünü silmek istediğinizden emin misiniz?');">
+                    <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+                    <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
+                    <button type="submit">Delete</button>
+                </form>
+
             </div>
         <?php endif; ?>
     </div>

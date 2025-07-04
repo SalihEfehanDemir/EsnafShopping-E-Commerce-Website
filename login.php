@@ -17,6 +17,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if($user && password_verify($password, $user['password_hash'])) {
         $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_role'] = $user['role'];
         header("Location: index.php");
         exit;
     } else {
@@ -24,92 +25,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
-
-<style>
-    body {
-      margin: 0; padding: 0;
-      font-family: Arial, sans-serif;
-      color: #333;
-    }
-    .container {
-      max-width: 400px;
-      margin: 50px auto;
-      padding: 0 20px;
-    }
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 30px;
-      border-bottom: 1px solid #ccc;
-    }
-    .tabs a {
-      margin: 0 20px;
-      text-decoration: none;
-      padding-bottom: 10px;
-      color: #333;
-      font-size: 1.2em;
-    }
-    .tabs a.active {
-      border-bottom: 2px solid #000;
-      font-weight: bold;
-    }
-    .form-group {
-      margin-bottom: 20px;
-      position: relative;
-    }
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 0.95em;
-      color: #666;
-    }
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 10px 40px 10px 10px; /* Göz ikonu için sağ boşluk */
-      border: none;
-      border-bottom: 1px solid #ccc;
-      font-size: 1em;
-      outline: none;
-    }
-    .eye-icon {
-      position: absolute;
-      right: 0;
-      top: 27px;
-      cursor: pointer;
-      font-size: 0.9em;
-      color: #888;
-      padding: 0 10px;
-      user-select: none;
-    }
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .actions a {
-      font-size: 0.9em;
-      text-decoration: none;
-      color: #666;
-    }
-    .actions a:hover {
-      color: #000;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      background-color: #000;
-      color: #fff;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-    button:hover {
-      opacity: 0.9;
-    }
-</style>
 
 <div class="container">
   <!-- Sekme görünümlü linkler -->

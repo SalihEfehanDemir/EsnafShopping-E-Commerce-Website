@@ -3,12 +3,8 @@ function isLoggedIn() {
     return isset($_SESSION['user_id']);
 }
 
-function isAdmin($pdo) {
-    if(!isLoggedIn()) return false;
-    $stmt = $pdo->prepare("SELECT role FROM users WHERE id = ?");
-    $stmt->execute([$_SESSION['user_id']]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $user && $user['role'] === 'admin';
+function isAdmin() {
+    return isLoggedIn() && isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
 }
 
 
